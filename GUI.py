@@ -4,14 +4,20 @@ import FreeSimpleGUI as FSG                                                     
 
 import time
 
+import os
+
+if os.path.exists("dist/todos.txt"):
+    with open("dist/todos.txt", "w") as file:
+        pass
+
 FSG.theme("GreenMono")
 
 clock = FSG.Text("",key='clock')
 label = FSG.Text("Type in a TO-DO")                                              #Text is type in FSG
 input_box = FSG.InputText(tooltip="Enter todo", key="todo")                      #tooltip is a tool to hover over box and InputText is also a Type
-add_button =FSG.Button(size=10, image_source="add5.png", image_size=(45,20),  #image_source for image implement ,mouseover_colors to click add button
-                       mouseover_colors="LightBlue2",                        #image size is image size
-                       tooltip="Add something", key="Add")                          #Button is also a type for buttons
+add_button =FSG.Button("Add",size=10)                                                  #image_source for image implement ,mouseover_colors to click add button
+                                                                                  #image size is image size
+                                                                              #Button is also a type for buttons
 list_box = FSG.Listbox(values=FunctionComb.todos_f(), key="todos",
                        enable_events=True , size=[45,10])
 replace_button = FSG.Button("Replace")

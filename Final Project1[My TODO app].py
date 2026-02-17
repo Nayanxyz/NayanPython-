@@ -4,6 +4,13 @@ import FreeSimpleGUI as FSG                                                     
 
 import time
 
+import os                                                            #import os and if todos file does not exist it will create one
+
+if not os.path.exists("dist/todos.txt"):                                    #now we are not depended upon todos file to exist
+    with open("dist/todos.txt", "w") as file:
+        pass
+
+
 FSG.theme("GreenMono")
 
 clock = FSG.Text("",key='clock')
