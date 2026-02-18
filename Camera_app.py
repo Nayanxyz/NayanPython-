@@ -2,6 +2,10 @@ import streamlit as st
 
 from PIL import Image                     #PIL is pillow library    #Image is class/type
 
+st.subheader("Color to Grayscale Converter")
+
+with st.expander("Upload Image"):
+    uploaded_image = st.file_uploader("Upload Image")
 
 with st.expander("Start Camera"):               #this expander method works like a button so that our browser
                                                 # wait till we give permission to camera
@@ -18,3 +22,12 @@ if camera_image:                                 #to not get none type error tha
     gray_img = img.convert("L")                     #L is grayscale algo(notation)
 
     st.image(gray_img)                             #st.image is rendering image to grayscale
+
+if uploaded_image:
+    #created pillow(PIL) image instances
+    img = Image.open(uploaded_image)                          #Image needs open method and open method needs camera image
+
+    #converted image to grayscale(b/w)
+    gray_img = img.convert("L")                     #L is grayscale algo(notation)
+
+    st.image(gray_img)
